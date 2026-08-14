@@ -1,0 +1,76 @@
+Name: torch
+Version: 2.4.0+cu124
+Summary: Tensors and Dynamic neural networks in Python with strong GPU acceleration
+Home-page: https://pytorch.org/
+Author: PyTorch Team
+Author-email: packages@pytorch.org
+License: BSD-3
+Location: /home/ai/reproductions/limit-of-RLVR-qwen7b-math500-v5/.venv/lib/python3.10/site-packages
+Requires: filelock, fsspec, jinja2, networkx, nvidia-cublas-cu12, nvidia-cuda-cupti-cu12, nvidia-cuda-nvrtc-cu12, nvidia-cuda-runtime-cu12, nvidia-cudnn-cu12, nvidia-cufft-cu12, nvidia-curand-cu12, nvidia-cusolver-cu12, nvidia-cusparse-cu12, nvidia-nccl-cu12, nvidia-nvjitlink-cu12, nvidia-nvtx-cu12, sympy, triton, typing-extensions
+Required-by: accelerate, flash-attn, liger_kernel, peft, tensordict, torchvision, vllm, xformers
+---
+Name: vllm
+Version: 0.6.3
+Summary: A high-throughput and memory-efficient inference and serving engine for LLMs
+Home-page: https://github.com/vllm-project/vllm
+Author: vLLM Team
+Author-email:
+License: Apache 2.0
+Location: /home/ai/reproductions/limit-of-RLVR-qwen7b-math500-v5/.venv/lib/python3.10/site-packages
+Requires: aiohttp, einops, fastapi, filelock, gguf, importlib-metadata, lm-format-enforcer, mistral-common, msgspec, numpy, nvidia-ml-py, openai, outlines, partial-json-parser, pillow, prometheus-client, prometheus-fastapi-instrumentator, protobuf, psutil, py-cpuinfo, pydantic, pyyaml, pyzmq, ray, requests, sentencepiece, tiktoken, tokenizers, torch, torchvision, tqdm, transformers, typing-extensions, uvicorn, xformers
+Required-by: verl
+---
+Name: transformers
+Version: 4.47.1
+Summary: State-of-the-art Machine Learning for JAX, PyTorch and TensorFlow
+Home-page: https://github.com/huggingface/transformers
+Author: The Hugging Face team (past and future) with the help of all our contributors (https://github.com/huggingface/transformers/graphs/contributors)
+Author-email: transformers@huggingface.co
+License: Apache 2.0 License
+Location: /home/ai/reproductions/limit-of-RLVR-qwen7b-math500-v5/.venv/lib/python3.10/site-packages
+Requires: filelock, huggingface-hub, numpy, packaging, pyyaml, regex, requests, safetensors, tokenizers, tqdm
+Required-by: peft, verl, vllm
+---
+Name: ray
+Version: 2.10.0
+Summary: Ray provides a simple, universal API for building distributed applications.
+Home-page: https://github.com/ray-project/ray
+Author: Ray Team
+Author-email: ray-dev@googlegroups.com
+License: Apache 2.0
+Location: /home/ai/reproductions/limit-of-RLVR-qwen7b-math500-v5/.venv/lib/python3.10/site-packages
+Requires: aiosignal, click, filelock, frozenlist, jsonschema, msgpack, packaging, protobuf, pyyaml, requests
+Required-by: verl, vllm
+---
+Name: sympy
+Version: 1.12
+Summary: Computer algebra system (CAS) in Python
+Home-page: https://sympy.org
+Author: SymPy development team
+Author-email: sympy@googlegroups.com
+License: BSD
+Location: /home/ai/reproductions/limit-of-RLVR-qwen7b-math500-v5/.venv/lib/python3.10/site-packages
+Requires: mpmath
+Required-by: latex2sympy2, latex2sympy2_extended, torch
+---
+Name: antlr4-python3-runtime
+Version: 4.11.1
+Summary: ANTLR 4.11.1 runtime for Python 3
+Home-page: http://www.antlr.org
+Author: Eric Vergnaud, Terence Parr, Sam Harwell
+Author-email: eric.vergnaud@wanadoo.fr
+License: BSD
+Location: /home/ai/reproductions/limit-of-RLVR-qwen7b-math500-v5/.venv/lib/python3.10/site-packages
+Requires:
+Required-by: latex2sympy2, latex2sympy2_extended
+---
+Name: flash-attn
+Version: 2.6.3
+Summary: Flash Attention: Fast and Memory-Efficient Exact Attention
+Home-page: https://github.com/Dao-AILab/flash-attention
+Author: Tri Dao
+Author-email: tri@tridao.me
+License:
+Location: /home/ai/reproductions/limit-of-RLVR-qwen7b-math500-v5/.venv/lib/python3.10/site-packages
+Requires: einops, torch
+Required-by:

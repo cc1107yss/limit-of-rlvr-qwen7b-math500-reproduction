@@ -1,0 +1,7 @@
+ff1954eda1ca9072c02bf500387d0c86cb549bef4dbb3b64f39468b547ec5f6b  /home/ai/reproductions/limit-of-RLVR-qwen7b-math500-v5/environment/wheels/antlr4_python3_runtime-4.11.1-py3-none-any.whl
+237ef9c6157db394e1ddde4ba609a21ebb98382377a27041edc09318801a6f24  /home/ai/reproductions/limit-of-RLVR-qwen7b-math500-v5/environment/wheels/flash_attn-2.6.3+cu123torch2.4cxx11abiFALSE-cp310-cp310-linux_x86_64.whl
+cb74f7d2aa5a21e5f9dcb315a4f9bde822328e76ba95cd0ba370cfda098a67f4  /home/ai/reproductions/limit-of-RLVR-qwen7b-math500-v5/environment/wheels/ray-2.10.0-cp310-cp310-manylinux2014_x86_64.whl
+c3588cd4295d0c0f603d0f2ae780587e64e2efeedb3521e46b9bb1d08d184fa5  /home/ai/reproductions/limit-of-RLVR-qwen7b-math500-v5/environment/wheels/sympy-1.12-py3-none-any.whl
+2cb28155635e3d3d0be198e3f3e7457a1d7b99e8c2eedc73fe22fab574d11a4c  /home/ai/reproductions/limit-of-RLVR-qwen7b-math500-v5/environment/wheels/torch-2.4.0+cu124-cp310-cp310-linux_x86_64.whl
+d2f5d19bb6283cd66c893ec7e6d931d6370bbf1cc93633326ff1f41a40046c9c  /home/ai/reproductions/limit-of-RLVR-qwen7b-math500-v5/environment/wheels/transformers-4.47.1-py3-none-any.whl
+939ae90251a5676b83d0c2afb92405e4e53bfb4b79a3920c80e5b57fbe9c5ff7  /home/ai/reproductions/limit-of-RLVR-qwen7b-math500-v5/environment/wheels/vllm-0.6.3-cp38-abi3-manylinux1_x86_64.whl

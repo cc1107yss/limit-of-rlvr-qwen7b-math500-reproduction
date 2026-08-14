@@ -1,0 +1,8 @@
+b715bd7dce7c7bb0ba09b40a8e0ce3fbd54f28629c0f55461217e055ae3ead49  results/base/seed-1/math500/test_qwen-boxed_-1_seed1_t0.6_s0_e-1.jsonl
+1d2a53dced2f7a9a7dcb65a806fb506bf06f7ef00b6417941f660da9ec19902f  results/base/seed-2/math500/test_qwen-boxed_-1_seed2_t0.6_s0_e-1.jsonl
+f410ac983618860dafd0176e93c9831920ea02cfc8336c455fbc6366c9d530e7  results/base/seed-3/math500/test_qwen-boxed_-1_seed3_t0.6_s0_e-1.jsonl
+537935c64058d98f278f1d3769862e4d4131ac43827a593a063cd37d19ff7f09  results/base/seed-4/math500/test_qwen-boxed_-1_seed4_t0.6_s0_e-1.jsonl
+5784391ae8bb1fa30538b832595dc29cd6ab75e00a29d34637368d9e0f6ab91d  results/simplerl/seed-1/math500/test_qwen-boxed_-1_seed1_t0.6_s0_e-1.jsonl
+31fcfe4c3af9e3ddd4ce4de241013da949e3877b95ccf615b9ee38d77f361b6b  results/simplerl/seed-2/math500/test_qwen-boxed_-1_seed2_t0.6_s0_e-1.jsonl
+a1eb64e5805eb2145313e0570961ab310ef188a9e56eba04b6c607db8b50fbeb  results/simplerl/seed-3/math500/test_qwen-boxed_-1_seed3_t0.6_s0_e-1.jsonl
+a17a8ef32ccf7152b4ae32a075fa7f59a2ab82a59fcc145095d01c1ca68c3f7c  results/simplerl/seed-4/math500/test_qwen-boxed_-1_seed4_t0.6_s0_e-1.jsonl

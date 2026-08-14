@@ -1,0 +1,15 @@
+{
+  "python": "3.10.20",
+  "packages": {
+    "torch": "2.4.0+cu124",
+    "vllm": "0.6.3",
+    "transformers": "4.47.1",
+    "ray": "2.10.0",
+    "sympy": "1.12",
+    "antlr4-python3-runtime": "4.11.1",
+    "flash-attn": "2.6.3"
+  },
+  "torch_cuda_runtime": "12.4",
+  "cuda_available": true,
+  "gpu": "NVIDIA GeForce RTX 3090"
+}

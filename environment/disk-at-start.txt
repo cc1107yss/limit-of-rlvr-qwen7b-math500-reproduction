@@ -1,0 +1,2 @@
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sdb1       3.6T  3.1T  328G  91% /home
