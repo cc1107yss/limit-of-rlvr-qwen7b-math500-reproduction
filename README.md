@@ -4,7 +4,7 @@ This repository contains an auditable reproduction of the Qwen2.5-7B MATH500 com
 
 The reproduction evaluates the authors' public Base and SimpleRL checkpoints. It does **not** retrain GRPO. The official evaluator, prompt, immutable model revisions, dataset, sampling configuration, and eight-run execution order are fixed and documented below.
 
-> **Supervisor-ready experiment report:** [English](reports/EXPERIMENT_REPORT.en.md) | [中文](reports/EXPERIMENT_REPORT.zh-CN.md)
+> **experiment report:** [English](reports/EXPERIMENT_REPORT.en.md) | [中文](reports/EXPERIMENT_REPORT.zh-CN.md)
 
 ## Main result
 
