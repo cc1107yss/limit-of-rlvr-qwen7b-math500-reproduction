@@ -1,11 +1,11 @@
-# 实验报告：Qwen2.5-7B × MATH500 严格复现
+# Qwen2.5-7B × MATH500 严格复现实验报告
 
 [English Version](EXPERIMENT_REPORT.en.md) · [仓库首页](../README.md) · [结果](../audit/results.json)
 
 **实验对象：** 复现论文 *Limit of Reinforcement Learning with Verifiable Rewards*（[arXiv:2504.13837 v5](https://arxiv.org/abs/2504.13837)）Figure 2 / Table 2<br>
 **复现范围：** 仅评测公开 checkpoint，不重新训练 GRPO
 
-## 1. 执行摘要
+## 1. 摘要
 
 ### 研究问题
 
@@ -17,13 +17,13 @@ SimpleRL 显著提高了低采样预算下的准确率：pooled pass@1 从 **61.
 
 逐题配对分析支持这一反转：在 pass@128 下，Base 独有 19 道可解题，SimpleRL 独有 3 道，其余 478 道持平。SimpleRL − Base 的逐题 bootstrap 95% 置信区间为 **[−5.00, −1.40] 个百分点**。
 
-该结果复现了原论文的核心定性结论：**RLVR 可能提高模型在已有可解问题上采样到正确答案的概率，同时缩小大采样预算揭示的长尾问题覆盖范围。** 因此，pass@1 与高预算 pass@k 回答的是不同的科学问题，实验报告应同时给出二者。
+该结果复现了原论文的核心定性结论：**RLVR 可能提高模型在已有可解问题上采样到正确答案的概率，同时缩小大采样预算揭示的长尾问题覆盖范围。** 
 
 ## 2. 实验设计
 
 本实验在完全共享的固定评测配置下，对论文作者公开的 Base 与 SimpleRL checkpoint 进行评测，不覆盖 GRPO 训练阶段。
 
-| 项目 | 审计后的固定设置 |
+| 项目 | 固定设置 |
 |---|---|
 | 目标论文 | arXiv:2504.13837 v5，Figure 2 / Table 2 |
 | 官方代码 | `LeapLabTHU/limit-of-RLVR@79c348f4543330bb78b01a5332df09fea2700f70` |
