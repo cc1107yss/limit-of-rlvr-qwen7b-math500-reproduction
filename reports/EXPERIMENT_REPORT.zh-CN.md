@@ -1,9 +1,8 @@
-# 导师版实验报告：Qwen2.5-7B × MATH500 严格复现
+# 实验报告：Qwen2.5-7B × MATH500 严格复现
 
-[English Version](EXPERIMENT_REPORT.en.md) · [仓库首页](../README.md) · [机器可读结果](../audit/results.json)
+[English Version](EXPERIMENT_REPORT.en.md) · [仓库首页](../README.md) · [结果](../audit/results.json)
 
 **实验对象：** 复现论文 *Limit of Reinforcement Learning with Verifiable Rewards*（[arXiv:2504.13837 v5](https://arxiv.org/abs/2504.13837)）Figure 2 / Table 2<br>
-**评测完成时间：** 2026 年 8 月 14 日（UTC）<br>
 **复现范围：** 仅评测公开 checkpoint，不重新训练 GRPO
 
 ## 1. 执行摘要
@@ -42,9 +41,10 @@ SimpleRL 显著提高了低采样预算下的准确率：pooled pass@1 从 **61.
 
 实验共生成 8 个结果文件。每个文件包含 500 题 × 每题 32 个回答，即**每个模型 64,000 个回答，总计 128,000 个回答**。对于某题的 (n) 个实际样本和其中 (c) 个正确样本，采用无偏估计量：
 
-\[
-\operatorname{pass@k}=1-\frac{\binom{n-c}{k}}{\binom{n}{k}}.
-\]
+$$
+\operatorname{pass@k}
+= 1 - \frac{\binom{n-c}{k}}{\binom{n}{k}}
+$$
 
 pooled pass@128 中的 (n=128) 来自四个 seed 的真实样本合并，而不是由单个 seed 的 pass@32 外推得到。
 
