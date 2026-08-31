@@ -2,7 +2,7 @@
 
 [English Version](EXPERIMENT_REPORT.en.md) · [仓库首页](../README.md) · [结果](../audit/results.json)
 
-**实验对象：** 复现论文 *Limit of Reinforcement Learning with Verifiable Rewards*（[arXiv:2504.13837 v5](https://arxiv.org/abs/2504.13837)）Figure 2 / Table 2<br>
+**实验对象：** 复现论文 *Limit of Reinforcement Learning with Verifiable Rewards*（[arXiv:2504.13837 v5](https://arxiv.org/pdf/2504.13837)）Figure 2 / Table 2<br>
 **复现范围：** 仅评测公开 checkpoint，不重新训练 GRPO
 
 ## 1. 摘要
@@ -17,7 +17,7 @@ SimpleRL 显著提高了低采样预算下的准确率：pooled pass@1 从 **61.
 
 逐题配对分析支持这一反转：在 pass@128 下，Base 独有 19 道可解题，SimpleRL 独有 3 道，其余 478 道持平。SimpleRL − Base 的逐题 bootstrap 95% 置信区间为 **[−5.00, −1.40] 个百分点**。
 
-该结果复现了原论文的核心定性结论：**RLVR 可能提高模型在已有可解问题上采样到正确答案的概率，同时缩小大采样预算揭示的长尾问题覆盖范围。** 
+该结果复现了原论文的核心定性结论：**RLVR 可能提高模型在原本可解问题上采样到正确答案的概率，但也可能使采样分布更加集中，降低大规模采样对长尾问题或少见解法的探索覆盖。** 
 
 ## 2. 实验设计
 
@@ -26,9 +26,9 @@ SimpleRL 显著提高了低采样预算下的准确率：pooled pass@1 从 **61.
 | 项目 | 固定设置 |
 |---|---|
 | 目标论文 | arXiv:2504.13837 v5，Figure 2 / Table 2 |
-| 官方代码 | `LeapLabTHU/limit-of-RLVR@79c348f4543330bb78b01a5332df09fea2700f70` |
-| Base 模型 | `Qwen/Qwen2.5-7B@d149729398750b98c0af14eb82c78cfe92750796` |
-| RLVR 模型 | `hkust-nlp/Qwen-2.5-7B-SimpleRL-Zoo@d630142f26acc8adf8051298cba8023232169d56` |
+| 官方代码 | [LeapLabTHU/limit-of-RLVR](https://github.com/LeapLabTHU/limit-of-RLVR) |
+| Base 模型 | [Qwen/Qwen2.5-7B@d149729](https://huggingface.co/Qwen/Qwen2.5-7B/commit/d149729398750b98c0af14eb82c78cfe92750796) |
+| RLVR 模型 | [Qwen-2.5-7B-SimpleRL-Zoo@d630142](https://huggingface.co/hkust-nlp/Qwen-2.5-7B-SimpleRL-Zoo/commit/d630142f26acc8adf8051298cba8023232169d56) |
 | 数据集 | 仓库内 MATH500，共 500 题 |
 | 数据集 SHA-256 | `35dc41080a3680858b27fa7e0533d2d547825316fc5dafe5d316f4ccc5a06132` |
 | Prompt | 官方零样本 `qwen-boxed`，不额外应用 chat template |
@@ -39,14 +39,7 @@ SimpleRL 显著提高了低采样预算下的准确率：pooled pass@1 从 **61.
 | 运行环境 | Python 3.10.20；PyTorch 2.4.0+cu124；vLLM 0.6.3；RTX 3090 24 GiB |
 | 执行顺序 | Base seeds 1–4，随后 SimpleRL seeds 1–4 |
 
-实验共生成 8 个结果文件。每个文件包含 500 题 × 每题 32 个回答，即**每个模型 64,000 个回答，总计 128,000 个回答**。对于某题的 (n) 个实际样本和其中 (c) 个正确样本，采用无偏估计量：
-
-```math
-\operatorname{pass@k}
-= 1 - \frac{\binom{n-c}{k}}{\binom{n}{k}}
-```
-
-pooled pass@128 中的 (n=128) 来自四个 seed 的真实样本合并，而不是由单个 seed 的 pass@32 外推得到。
+实验共生成 8 个结果文件。每个文件包含 500 题 × 每题 32 个回答，即**每个模型 64,000 个回答，总计 128,000 个回答**。对于某题的 (n) 个实际样本和其中 (c) 个正确样本，采用无偏估计量
 
 ## 3. 主要结果
 
@@ -56,23 +49,22 @@ pooled pass@128 中的 (n=128) 来自四个 seed 的真实样本合并，而不�
 | Qwen2.5-7B SimpleRL | **77.93%** | **82.36%** | **85.68%** | **88.30%** | 90.22% | 91.51% | 92.35% | 93.00% |
 | SimpleRL − Base | +16.54 | +8.95 | +4.24 | +1.48 | −0.21 | −1.42 | −2.39 | −3.20 |
 
-下图以**柱形表示 Base**、以**折线表示 SimpleRL**，通过 [GitHub Mermaid 支持](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-diagrams)直接由 Markdown 渲染，不依赖外部图片资源；精确数值以表格为准。
+**原论文 Figure 2（MATH500 子图）：**
 
-```mermaid
-xychart-beta
-    title "Pooled pass@k：Base 柱形，SimpleRL 折线"
-    x-axis [1, 2, 4, 8, 16, 32, 64, 128]
-    y-axis "pass@k (%)" 60 --> 100
-    bar [61.39, 73.41, 81.44, 86.82, 90.43, 92.93, 94.74, 96.20]
-    line [77.93, 82.36, 85.68, 88.30, 90.22, 91.51, 92.35, 93.00]
-```
+<p align="center"><img src="figures/paper_figure2.svg" alt="原论文 Figure 2 完整图" width="720"></p>
 
-SimpleRL 在 64,000 个样本中产生 **49,877 个正确回答**，Base 为 **39,291 个**，这解释了显著的 pass@1 增益。然而，在 128 次尝试中至少出现过一次正确答案的题目数，Base 为 **481/500**，SimpleRL 为 **465/500**。因此，本实验区分了两个不同效应：
+<table width="100%">
+<tr>
+<td align="center" width="50%"><strong>Figure 2（MATH500 子图）</strong></td>
+<td align="center" width="50%"><strong>本次复现实验</strong></td>
+</tr>
+<tr>
+<td align="center" width="50%"><img src="figures/1.png" alt="原论文 Figure 2 子图" width="100%"></td>
+<td align="center" width="50%"><img src="figures/pass_at_k_reproduction.svg" alt="本次复现实验 MATH500 pass@k 曲线" width="100%"></td>
+</tr>
+</table>
 
-- **概率集中：** SimpleRL 在许多可解题目上为正确推理轨迹分配了更高的采样概率。
-- **覆盖范围：** 在 128 次采样预算下，Base 仍对多出 16 道题表现出非零的可观测成功率。
-
-数据证明了该评测设置下的“概率—覆盖”权衡，但不能单独证明训练永久删除了某种能力。概率质量重新分配、推理多样性变化、输出格式变化或极低概率解，都可能产生相同的观测现象。
+SimpleRL 在 64,000 个样本中产生 **49,877 个正确回答**，Base 为 **39,291 个**，这解释了显著的 pass@1 增益。然而，在 128 次尝试中至少出现过一次正确答案的题目数，Base 为 **481/500**，SimpleRL 为 **465/500**。
 
 ## 4. 与原论文结果对照
 
@@ -93,16 +85,7 @@ SimpleRL 在 64,000 个样本中产生 **49,877 个正确回答**，Base 为 **3
 | 仅 SimpleRL 可解 | 5 | 3 | −2 |
 | 双方均不可解 | 15 | 16 | +1 |
 
-```mermaid
-pie showData
-    title 本次复现：128 次采样下的题目可解集合
-    "双方可解" : 462
-    "仅 Base 可解" : 19
-    "仅 SimpleRL 可解" : 3
-    "双方均不可解" : 16
-```
-
-本次结果在数值上与原论文接近，并且最大类别“双方可解”完全一致，均为 462 题。其余少量题目数量差异符合随机解码的预期。实验没有因某个 seed 与论文数值不一致而选择、丢弃或重跑结果。因此，本次工作支持的是**配置和代码口径严格一致**，而不是把随机采样结果逐位完全一致作为复现要求。
+本次结果在数值上与原论文接近，并且最大类别“双方可解”完全一致，均为 462 题。其余少量题目数量差异符合预期。
 
 ## 5. 统计证据与 seed 稳定性
 
@@ -135,9 +118,7 @@ pie showData
 
 低预算方向非常稳定：四个 seed 中，SimpleRL 的 pass@1 均领先约 16.4–16.6 个百分点，pass@8 均领先约 1.4–1.7 个百分点。在反转附近，pass@16 的方向存在混合：Base 在三个 seed 中领先，SimpleRL 在 seed 2 中领先。pass@32 下，Base 在三个 seed 中领先，在 seed 2 中持平。因此，高预算结论来自完整 128 个实际样本的合并与逐题配对，而不是要求每个有限 seed 在反转点附近都具有完全相同的符号。
 
-## 6. 完整性、局限与结果解释
-
-### 数据完整性检查
+## 6. 数据完整性检查
 
 - 8 个 JSONL 均包含完整且唯一的 500 个题目索引。
 - 每题均有 32 个 generation、prediction、score 和 finish reason。
@@ -145,22 +126,6 @@ pie showData
 - Base 有 6 个空生成及对应的 6 个 `pred=None` 解析失败；这些实际观测样本被保留并计为错误。
 - SimpleRL 没有空生成，有 1 个回答因达到长度上限结束。
 - 最终审计没有覆盖原始输出，也没有选择性重新生成任何结果。
-
-### 局限性
-
-1. **Checkpoint 评测而非训练复现。** 本实验隔离验证了论文的评测结论，但没有独立复现 GRPO 优化过程。
-2. **随机解码。** 代码和配置固定不意味着采样输出逐位相同，应依据结论方向与统计不确定性判断复现程度。
-3. **环境漂移。** 核心依赖版本已固定并记录，但原作者未固定的传递依赖无法在事后完全还原。
-4. **可观测支持集。** “pass@128 可解”只表示 128 次尝试中至少成功一次，不代表未解题目的真实成功概率严格为零。
-5. **单一基准与模型对。** 在推广结论前，仍需覆盖更多任务、训练方案、模型规模与解码设置。
-
-### 对后续研究的启示
-
-- 同时报告低预算准确率和高预算覆盖率；只看 pass@1 可能掩盖解空间收窄。
-- 对 19 道 Base-only 和 3 道 SimpleRL-only 题目进行主题、难度、推理策略和格式敏感性分析。
-- 直接度量推理轨迹多样性，而不是只通过 pass@k 间接推断多样性。
-- 跟踪训练过程中覆盖差距出现的时间点，区分奖励导致的概率集中与 checkpoint 随机波动。
-- 检验熵控制、数据混合或显式多样性目标能否在保留 pass@1 增益的同时维持长尾覆盖。
 
 ## 7. 可复现性与审计链接
 
@@ -174,8 +139,4 @@ pie showData
 
 ## 结论
 
-在严格对齐公开 checkpoint 的复现实验中，SimpleRL 在少量采样时明显更强，但当预算增加到每题 128 次尝试时，Base 能覆盖更广的 MATH500 题目集合。本次结果与原论文高度接近，并进一步支持一个直接的实验建议：评估 RLVR 模型时，应同时衡量**单次采样正确率**和**随采样规模扩展的问题覆盖率**。
-
----
-
-[English Version](EXPERIMENT_REPORT.en.md) · [仓库首页](../README.md) · [机器可读结果](../audit/results.json)
+在严格对齐公开 checkpoint 的复现实验中，SimpleRL 在少量采样时明显更强，但当预算增加到每题 128 次尝试时，Base 能覆盖更广的 MATH500 题目集合。本次结果与原论文高度接近。

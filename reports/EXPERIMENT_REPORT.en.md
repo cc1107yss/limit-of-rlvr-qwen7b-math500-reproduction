@@ -1,4 +1,4 @@
-# Supervisor Report: Qwen2.5-7B × MATH500 Reproduction
+# Report: Qwen2.5-7B × MATH500 Reproduction
 
 [中文版](EXPERIMENT_REPORT.zh-CN.md) · [Repository home](../README.md) · [Machine-readable results](../audit/results.json)
 
