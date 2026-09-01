@@ -1,4 +1,4 @@
-# Qwen2.5-7B × MATH500 严格复现实验报告
+# Qwen2.5-7B × MATH500 严格复现实验
 
 [English Version](EXPERIMENT_REPORT.en.md) · [仓库首页](../README.md) · [结果](../audit/results.json)
 
